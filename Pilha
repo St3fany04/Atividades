@@ -1,0 +1,63 @@
+public class Pilha<T> {
+    private No inicio;
+    
+    private class No {
+        T dado;
+        No proximo;
+        
+        No(T dado) {
+            this.dado = dado;
+            this.proximo = null;
+        }
+    }
+    
+    public Pilha() {
+        this.inicio = null;
+    }
+    
+    // Insere um elemento no topo da pilha
+    public void empilhar(T dado) {
+        No novoNo = new No(dado);
+        novoNo.proximo = inicio;
+        inicio = novoNo;
+    }
+    
+    // Remove e retorna o elemento do topo
+    public T desempilhar() {
+        if (estaVazia()) {
+            throw new IllegalStateException("Pilha vazia!");
+        }
+        T dado = inicio.dado;
+        inicio = inicio.proximo;
+        return dado;
+    }
+    
+    // Retorna o elemento do topo sem remover
+    public T topo() {
+        if (estaVazia()) {
+            throw new IllegalStateException("Pilha vazia!");
+        }
+        return inicio.dado;
+    }
+    
+    // Verifica se a pilha está vazia
+    public boolean estaVazia() {
+        return inicio == null;
+    }
+    
+    // Retorna o tamanho da pilha
+    public int tamanho() {
+        int cont = 0;
+        No aux = inicio;
+        while (aux != null) {
+            cont++;
+            aux = aux.proximo;
+        }
+        return cont;
+    }
+    
+    // Limpa a pilha
+    public void limpar() {
+        inicio = null;
+    }
+}
