@@ -1,0 +1,51 @@
+public class Principal {
+    public static void main(String[] args) {
+        System.out.println("=== TESTE DE PILHA ===");
+        testePilha();
+        
+        System.out.println("\n=== TESTE DE FILA ===");
+        testeFila();
+    }
+    
+    public static void testePilha() {
+        Pilha<Integer> pilha = new Pilha<>();
+        
+        // Empilhando elementos
+        pilha.empilhar(10);
+        pilha.empilhar(20);
+        pilha.empilhar(30);
+        pilha.empilhar(40);
+        
+        System.out.println("Tamanho da pilha: " + pilha.tamanho());
+        System.out.println("Topo: " + pilha.topo());
+        
+        // Desempilhando elementos
+        System.out.println("Desempilhando:");
+        while (!pilha.estaVazia()) {
+            System.out.println(pilha.desempilhar());
+        }
+        
+        System.out.println("Pilha vazia? " + pilha.estaVazia());
+    }
+    
+    public static void testeFila() {
+        Fila<String> fila = new Fila<>();
+        
+        // Enfileirando elementos
+        fila.enfileirar("Ana");
+        fila.enfileirar("Bruno");
+        fila.enfileirar("Carlos");
+        fila.enfileirar("Diana");
+        
+        System.out.println("Tamanho da fila: " + fila.tamanho());
+        System.out.println("Primeiro: " + fila.primeiro());
+        
+        // Desenfileirando elementos
+        System.out.println("Desenfileirando:");
+        while (!fila.estaVazia()) {
+            System.out.println(fila.desenfileirar());
+        }
+        
+        System.out.println("Fila vazia? " + fila.estaVazia());
+    }
+}
