@@ -1,0 +1,75 @@
+public class Fila<T> {
+    private No inicio;
+    private No fim;
+    
+    private class No {
+        T dado;
+        No proximo;
+        
+        No(T dado) {
+            this.dado = dado;
+            this.proximo = null;
+        }
+    }
+    
+    public Fila() {
+        this.inicio = null;
+        this.fim = null;
+    }
+    
+    // Insere um elemento no final da fila
+    public void enfileirar(T dado) {
+        No novoNo = new No(dado);
+        
+        if (estaVazia()) {
+            inicio = novoNo;
+        } else {
+            fim.proximo = novoNo;
+        }
+        fim = novoNo;
+    }
+    
+    // Remove e retorna o primeiro elemento
+    public T desenfileirar() {
+        if (estaVazia()) {
+            throw new IllegalStateException("Fila vazia!");
+        }
+        T dado = inicio.dado;
+        inicio = inicio.proximo;
+        
+        if (inicio == null) {
+            fim = null;
+        }
+        return dado;
+    }
+    
+    // Retorna o primeiro elemento sem remover
+    public T primeiro() {
+        if (estaVazia()) {
+            throw new IllegalStateException("Fila vazia!");
+        }
+        return inicio.dado;
+    }
+    
+    // Verifica se a fila está vazia
+    public boolean estaVazia() {
+        return inicio == null;
+    }
+    
+    // Retorna o tamanho da fila
+    public int tamanho() {
+        int cont = 0;
+        No aux = inicio;
+        while (aux != null) {
+            cont++;
+            aux = aux.proximo;
+        }
+        return cont;
+    }
+    
+    // Limpa a fila
+    public void limpar() {
+        inicio = null;
+        fim = null;
+    }
+}
