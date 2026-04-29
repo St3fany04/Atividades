@@ -1,0 +1,53 @@
+public class MaiorMenor {
+    private int[] numeros;
+    private int maior;
+    private int menor;
+
+    // Construtor
+    public MaiorMenor(int[] numeros) {
+        this.numeros = numeros;
+        this.maior = Integer.MIN_VALUE;
+        this.menor = Integer.MAX_VALUE;
+        encontrarMaiorMenor();
+    }
+
+    // Método que percorre o array e determina maior e menor
+    private void encontrarMaiorMenor() {
+        if (numeros == null || numeros.length == 0) {
+            System.out.println("Array vazio!");
+            return;
+        }
+
+        for (int i = 0; i < numeros.length; i++) {
+            if (numeros[i] > maior) {
+                maior = numeros[i];
+            }
+            if (numeros[i] < menor) {
+                menor = numeros[i];
+            }
+        }
+    }
+
+    // Getters
+    public int getMaior() {
+        return maior;
+    }
+
+    public int getMenor() {
+        return menor;
+    }
+
+    public int[] getNumeros() {
+        return numeros;
+    }
+
+    // Método para exibir informações
+    public void exibirResultados() {
+        System.out.println("Array: ");
+        for (int num : numeros) {
+            System.out.print(num + " ");
+        }
+        System.out.println("\nMaior valor: " + maior);
+        System.out.println("Menor valor: " + menor);
+    }
+}
